@@ -1,0 +1,8 @@
+.footer {
+  background: $color-default-black;
+  min-height: 312px;
+
+  @include vp-1023 {
+    min-height: 204px;
+  }
+}

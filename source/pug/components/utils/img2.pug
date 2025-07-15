@@ -1,0 +1,10 @@
+mixin img2(path, image, format, width, height, altText, mobileImage)
+  if format === 'svg'
+    img(src=`img/${path}/${image}.${format}`, width=width, height=height, alt=altText)
+  else if mobileImage
+    picture
+      source(media="(max-width: 767px)", srcset=`img/${path}/${mobileImage}.${format}, img/${path}/${mobileImage}@2x.${format} 2x`)
+      source(srcset=`img/${path}/${image}.${format}, img/${path}/${image}@2x.${format} 2x`)
+      img(src=`img/${path}/${image}.${format}`, width=width, height=height, alt=altText)
+  else
+    img(src=`img/${path}/${image}.${format}`, srcset=`img/${path}/${image}@2x.${format} 2x`, width=width, height=height, alt=altText)

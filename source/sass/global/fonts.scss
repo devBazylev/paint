@@ -1,0 +1,5 @@
+@import "../mixins.scss";
+@include font("Inter", inter-light, 300);
+@include font("Inter", inter-regular, 400);
+@include font("Inter", inter-medium, 500);
+@include font("Inter", inter-semibold, 600);

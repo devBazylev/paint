@@ -1,0 +1,15 @@
+mixin picture(path, image, format, desktopWidth, desktopHeight, tabletWidth, tabletHeight, mobileWidth, mobileHeight, altText)
+  picture(class!=attributes.class)
+    //- Desktop
+    source(type="image/webp", srcset="img/" + path + "/" + image + "-desktop.webp" + ", " + "img/" + path + "/" + image + "-desktop@2x.webp 2x", media="(min-width: 1024px)")
+    //- Tablet
+    source(type="image/webp", srcset="img/" + path + "/" + image + "-tablet.webp" + ", " + "img/" + path + "/" + image + "-tablet@2x.webp 2x", media="(min-width: 768px)")
+    //- Mobile webp
+    source(type="image/webp", srcset="img/" + path + "/" + image + "-mobile.webp" + ", " + "img/" + path + "/" + image + "-mobile@2x.webp 2x")
+
+    //- Desktop
+    source(srcset="img/" + path + "/" + image + "-desktop." + format + ", " + "img/" + path + "/" + image + "-desktop@2x." + format + " 2x", media="(min-width: 1024px)")
+    //- Tablet
+    source(srcset="img/" + path + "/" + image + "-tablet." + format + ", " + "img/" + path + "/" + image + "-tablet@2x." + format + " 2x", media="(min-width: 768px)")
+    //- Mobile fallback
+    img(src="img/" + path + "/" + image + "-mobile." + format, srcset="img/" + path + "/" + image + "-mobile@2x." + format + " 2x", width=mobileWidth, height=mobileHeight, alt=altText)
