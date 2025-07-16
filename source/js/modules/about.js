@@ -31,10 +31,10 @@ const initAbout = () => {
             bulletActiveClass: 'about__bullet--active',
           },
 
-          // autoplay: {
-          //   delay: 3000,
-          //   disableOnInteraction: false,
-          // },
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
 
           breakpoints: {
             1920: {
