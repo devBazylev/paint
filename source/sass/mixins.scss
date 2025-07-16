@@ -8,13 +8,6 @@
   }
 }
 
-@mixin pse($content: "", $display: block) {
-  content: $content;
-  display: $display;
-
-  @content;
-}
-
 @mixin retina {
   @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
     @content;
@@ -152,7 +145,7 @@
   @content;
 
   @if $name {
-    background-image: url("https://hhcdn.ru/ichameleon/#{$name}.svg");
+    background-image: url("img/svg/#{$name}.svg");
   }
 }
 

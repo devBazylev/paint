@@ -56,6 +56,7 @@ mixin info()
             .info__text!= item.text
             .info__bag
               .info__price!= item.price
+                span!= "₽"
               +btn().info__btn
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path d="M10 4.16663V15.8333" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
