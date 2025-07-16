@@ -16,6 +16,8 @@ const initAbout = () => {
           watchSlidesProgress: true,
           resizeObserver: true,
           updateOnWindowResize: true,
+          spaceBetween: 0,
+          centeredSlides: true,
 
           navigation: {
             prevEl: '.about__btn--prev',
@@ -33,6 +35,12 @@ const initAbout = () => {
           //   delay: 3000,
           //   disableOnInteraction: false,
           // },
+
+          breakpoints: {
+            1920: {
+              slidesPerView: 'auto',
+            },
+          },
         });
       }
     } else {
