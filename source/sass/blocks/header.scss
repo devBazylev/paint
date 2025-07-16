@@ -1,26 +1,26 @@
 .header {
   position: relative;
   display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
   min-height: 104px;
-  padding: 10px 52px 10px 64px;
+  padding: 10px 100px 10px 64px;
 
   @include vp-1279 {
-    padding: 10px 22px 10px 34px;
+    padding: 10px 100px 10px 34px;
   }
 
-
   @include vp-1023 {
+    grid-template-columns: 1fr;
     min-height: unset;
     padding: 0;
   }
 
   &__wrap {
-    display: none;
+    display: grid;
+    align-items: center;
 
     @include vp-1023 {
-      display: grid;
-      align-items: center;
       min-height: 64px;
     }
 
@@ -29,7 +29,7 @@
         @include pse {
           position: absolute;
           left: 50%;
-          bottom: -1px;
+          bottom: 0;
           transform: translate(-50%, 0);
           width: calc(100% - 45px);
           height: 1px;
@@ -42,7 +42,7 @@
 
   &__toggler {
     position: relative;
-    display: inline-flex;
+    display: none;
     align-items: center;
     justify-content: center;
     width: fit-content;
@@ -51,6 +51,10 @@
     padding: 20px;
     align-self: center;
     cursor: pointer;
+
+    @include vp-1023 {
+      display: inline-flex;
+    }
 
     &::before,
     &::after {
@@ -83,7 +87,7 @@
 
   &__cont {
     display: grid;
-    grid-template-columns: auto 1fr auto auto;
+    grid-template-columns: 1fr auto auto;
     gap: 50px;
     align-items: center;
     z-index: 2;
@@ -134,14 +138,13 @@
   }
 
   &__logo {
-
     @include vp-1279 {
       width: 99px;
     }
 
     @include vp-1023 {
       position: absolute;
-      top: -33px;
+      top: 21px;
       left: 50%;
       transform: translate(-50%, 0);
       width: 99px;
@@ -150,19 +153,16 @@
 
   &__nav {
     display: flex;
-    margin: 0 0 0 109px;
+    margin: 0 0 0 159px;
 
     @include vp-1439 {
-      margin: 20px;
-    }
-
-    @include vp-1279 {
-      margin: 0;
+      margin: 0 0 0 20px;
     }
 
     @include vp-1023 {
       flex-direction: column;
       gap: 5px;
+      margin: 0;
     }
   }
 
@@ -179,10 +179,6 @@
       font-size: 12px;
       padding: 6px;
     }
-
-    @include vp-1023 {
-
-    }
   }
 
   &__box {
@@ -194,10 +190,6 @@
     @include vp-1439 {
       margin: 0;
     }
-
-    @include vp-1023 {
-
-    }
   }
 
   &__tel {
@@ -206,12 +198,7 @@
     font-weight: 500;
     line-height: 100%;
     letter-spacing: -0.32px;
-
-    @include vp-1023 {
-
-    }
   }
-
 
   &__sign {
     font-size: 14px;
@@ -219,31 +206,21 @@
     font-weight: 400;
     line-height: 100%;
     opacity: 0.3;
-
-    @include vp-1023 {
-
-    }
   }
 
   &__tools {
     display: flex;
     align-items: center;
-
-    @include vp-1023 {
-
-    }
   }
 
   &__tool {
     padding: 12px;
-
-    @include vp-1023 {
-
-    }
   }
 
   &__cart {
-    position: relative;
+    position: absolute;
+    top: 28px;
+    right: 52px;
     padding: 12px;
     text-align: center;
     font-size: 12px;
@@ -255,8 +232,7 @@
     flex-shrink: 0;
 
     @include vp-1023 {
-      position: absolute;
-      top: -46px;
+      top: 8px;
       right: 12px;
     }
 
@@ -271,14 +247,6 @@
         border-radius: 50%;
         background-color: $color-padua;
       }
-    }
-  }
-
-  &__selector {
-
-
-    @include vp-1023 {
-
     }
   }
 }

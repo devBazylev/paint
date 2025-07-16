@@ -16,9 +16,10 @@ mixin header()
   header.header
     .header__wrap
       +btn().header__toggler
-    .header__cont
       +btn({href: 'index.html'}).header__logo
         img(src="img/content/logo.svg", width="131", height="26", alt="Логотип.")
+      +btn({href: '#'}).header__cart.btn
+    .header__cont
       nav.header__nav
         each item in data1
           +btn({href: '#'}).header__link.btn!= `${item.text}`
@@ -29,4 +30,3 @@ mixin header()
         each item in data2
           +btn({href: '#'}).header__tool.btn
             img(src=`img/sprite/${item.path}.svg`, width=`${item.size}`, height=`${item.size}`, alt=`${item.path}.`)
-        +btn({href: '#'}).header__cart.btn
