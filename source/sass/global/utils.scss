@@ -5,6 +5,7 @@
   flex-direction: column;
   min-height: 100vh;
   margin: 0 auto;
+  min-width: 375px;
 
   @include vp-1023 {
     background-color: $color-default-white;
