@@ -1,11 +1,323 @@
 .info {
   position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 123px;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 62px 67px 147px 64px;
 
   @include vp-1023 {
+    grid-template-columns: 1fr;
+    gap: 48px 0;
+    padding: 48px 24px 64px;
+  }
+
+  &__title {
+    font-size: 0;
+    line-height: 0;
+    grid-column: 1/3;
+
+    @include vp-1023 {
+      grid-column: 1/2;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 88%;
+      letter-spacing: -1.44px;
+    }
+  }
+
+  &__case {
+    grid-column: 1/2;
+    margin: 10px 0 0;
+
+    @include vp-1023 {
+      position: absolute;
+      grid-column: unset;
+    }
+  }
+
+  &__toggler {
+    display: none;
+
+    @include vp-1023 {
+      display: block;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 0.72px;
+      text-transform: uppercase;
+    }
+  }
+
+  &__filters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 180px;
+
+    @include vp-1023 {
+      width: 100%;
+    }
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__backup {
+    position: relative;
+    display: block;
+    width: 36px;
+    height: 22px;
+    margin: 0 11px 0 0;
+    border-radius: 11px;
+    background-color: $color-white-smoke;
+    transition: background-color $trans-default;
+
+    &::after {
+      @include pse {
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        width: 8px;
+        height: 8px;
+        background-color: $color-swamp;
+        border-radius: 50%;
+        transition: left $trans-default;
+      }
+    }
+  }
+
+  &__check:checked + &__backup {
+    background-color: $color-padua;
+  }
+
+  &__check:checked + &__backup::after {
+    left: 21px;
+  }
+
+  &__checktext {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+  }
+
+  &__cont {
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+
+    @include vp-1023 {
+      grid-column: 1/2;
+      gap: 24px;
+    }
+  }
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__num {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+
+    @include vp-1023 {
+      display: none;
+    }
+  }
+
+  &__select {
+    position: relative;
+    left: 11px;
+
+    @include vp-1023 {
+
+    }
+  }
+
+  &__board {
+    position: relative;
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    text-align: right;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+
+    @include vp-1023 {
+
+    }
+
+    &::after {
+      @include pse {
+        width: 0;
+        height: 0;
+        border: 0 solid transparent;
+        border-left-width: 3px;
+        border-right-width: 3px;
+        border-top: 5px solid $color-nero;
+        transition: transform $trans-default;
+      }
+    }
+  }
+
+  &__select--opened &__board::after {
+    transform: rotate(180deg);
+  }
+
+  &__drop {
+    position: absolute;
+
+    @include vp-1023 {
+
+    }
+  }
+
+  &__option {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+
+    @include vp-1023 {
+
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(278px, 1fr));
+    gap: 16px 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include vp-1023 {
+      grid-template-columns: repeat(auto-fit, minmax(156px, 1fr));
+      gap: 24px 15px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 0 14px;
+    border-bottom: 1px solid $color-black-trans;
+    cursor: pointer;
+
+    @include vp-1023 {
+      padding: 0 0 34px;
+    }
+  }
+
+  &__box {
+
+
+    @include vp-1023 {
+
+    }
+  }
+
+  &__front {
+
+
+    @include vp-1023 {
+
+    }
+  }
+
+  &__back {
+
+
+    @include vp-1023 {
+
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 112%;
+    letter-spacing: 0.32px;
+  }
+
+  &__bag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include vp-1023 {
+
+    }
+  }
+
+  &__price {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%;
+
+    @include vp-1023 {
+
+    }
+  }
+
+  &__btn {
+    width: 80px;
+    height: 32px;
+    padding: 6px 0;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background-color: $color-default-white;
+    transition: background-color $trans-default;
+
+    @include vp-1023 {
+
+    }
+  }
+
+  &__item path {
+    transition: stroke $trans-default;
+  }
+
+  &__item:hover &__btn {
+    opacity: 1;
+    background-color: $color-padua;
 
   }
 
-  @include vp-767 {
+  &__item:hover path {
+    stroke: $color-swamp;
+  }
 
+  &__selector {
+
+
+    @include vp-1023 {
+
+    }
   }
 }

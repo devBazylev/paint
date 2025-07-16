@@ -1,2 +1,63 @@
 mixin info()
+  -
+    const data1 = [
+      {name: "info1", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "6000", text: "Краска Wallquest, Brownsone MS90102"},
+      {name: "info2", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "4800", text: "Краска Wallquest, Brownsone MS90102"},
+      {name: "info3", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "5290", text: "Краска Wallquest, Brownsone MS90102"},
+      {name: "info4", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "2800", text: "Краска Wallquest, Brownsone MS90102"},
+      {name: "info5", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "3400", text: "Краска Wallquest, Brownsone MS90102"},
+      {name: "info1", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "6000", text: "Краска Wallquest, Brownsone MS90102"},
+      {name: "info6", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "4800", text: "Краска Wallquest, Brownsone MS90102"},
+      {name: "info6", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "5290", text: "Краска Wallquest, Brownsone MS90102"},
+      {name: "info7", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "2800", text: "Краска Wallquest, Brownsone MS90102"},
+      {name: "info8", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "3400", text: "Краска Wallquest, Brownsone MS90102"},
+      {name: "info1", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "6000", text: "Краска Wallquest, Brownsone MS90102"},
+      {name: "info6", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "4800", text: "Краска Wallquest, Brownsone MS90102"},
+      {name: "info6", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "5290", text: "Краска Wallquest, Brownsone MS90102"},
+      {name: "info7", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "2800", text: "Краска Wallquest, Brownsone MS90102"},
+      {name: "info8", backup: "infoback", size: "278", frontAlt: "Краска.", backAlt: "Покрашенная стена.", price: "3400", text: "Краска Wallquest, Brownsone MS90102"},
+    ]
+  -
+    const data2 = [
+      {name: "new", id: "new", text: "Новинки", check: true},
+      {name: "exist", id: "exist", text: "Есть в&#160;наличии", check: false},
+      {name: "contract", id: "contract", text: "Контрактные", check: false},
+      {name: "exclusive", id: "exclusive", text: "Эксклюзивные", check: false},
+      {name: "sale", id: "sale", text: "Распродажа", check: false},
+    ]
   section.info
+    h2.info__title!= "Краски"
+    .info__case
+      +btn().info__toggler.btn!= "Фильтры"
+      .info__filters
+        each item in data2
+          label.info__label.btn
+            input(type="checkbox", name=item.name, id=item.id, tabindex="-1", checked=item.check).visually-hidden.info__check
+            span(tabindex="1").info__backup
+            span.info__checktext!= item.text
+    .info__cont
+      .info__wrap
+        .info__num!= "412 товаров"
+        .info__select
+          +btn().info__board!= "Сначала дорогие"
+          .info__drop
+            .info__option!= "Сначала дорогие"
+            .info__option!= "Сначала недорогие"
+            .info__option!= "Сначала популярные"
+            .info__option!= "Сначала новые"
+      ul.info__list
+        each item in data1
+          li.info__item
+            .info__box
+              .info__front
+                +pic("content", item.name, "png", 278, 278, item.frontAlt)
+              .info__back
+                +pic("content", item.backup, "jpg", 278, 278, item.backAlt)
+            .info__text!= item.text
+            .info__bag
+              .info__price!= item.price
+              +btn().info__btn
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M10 4.16663V15.8333" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4.16699 10H15.8337" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
