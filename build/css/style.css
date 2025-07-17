@@ -1948,7 +1948,7 @@ button,
   display: none;
 }
 
-.info__choice--opened {
+.info .info__choice--opened {
   max-height: 1000vh;
   opacity: 1;
   pointer-events: all;
