@@ -11,6 +11,11 @@ body {
   min-height: 100vh;
 }
 
+body.lock-scroll {
+  height: 100vh;
+  overflow: hidden;
+}
+
 html {
   font-style: normal;
   font-weight: 400;

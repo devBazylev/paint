@@ -2,13 +2,22 @@ import {loadData} from './api';
 import {createCards} from './creation';
 
 const initInfo = () => {
+  const overlay = document.querySelector('.overlay');
   const info = document.querySelector('.info');
+  const toggler = info.querySelector('.info__toggler');
   const choice = info.querySelector('.info__choice');
   const checkboxes = info.querySelectorAll('.info__check');
   const counter = info.querySelector('.info__num');
   const list = info.querySelector('.info__list');
 
   let sourceCards;
+  let startY = 0;
+
+  const onToggler = () => {
+    choice.classList.add('info__choice--opened');
+    overlay.classList.add('overlay--active');
+    document.body.classList.add('lock-scroll');
+  };
 
   const getCheckedIds = () => {
     const checkboxes = choice.querySelectorAll('.info__check:checked');
@@ -47,6 +56,19 @@ const initInfo = () => {
     item.addEventListener('change', showCheckedCards);
   });
 
+  toggler.addEventListener('click', onToggler);
+  choice.addEventListener('touchstart', (e) => {
+    startY = e.touches[0].clientY;
+  });
+  choice.addEventListener('touchend', (e) => {
+    const endY = e.changedTouches[0].clientY;
+    if (endY - startY > 50) {
+      e.preventDefault();
+      choice.classList.remove('info__choice--opened');
+      overlay.classList.remove('overlay--active');
+      document.body.classList.remove('lock-scroll');
+    }
+  });
 };
 
 export {initInfo};

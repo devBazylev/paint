@@ -17,14 +17,13 @@ mixin info()
             input(type="checkbox", name=item.name, id=item.id, tabindex="-1", checked=item.check).visually-hidden.info__check
             span(tabindex="1").info__backup
             span.info__checktext!= item.text
-    .info__cont
-      .info__wrap
-        .info__num!= "0 товаров"
-        .info__select
-          +btn().info__board!= "Сначала дорогие"
-          .info__drop
-            .info__option!= "Сначала дорогие"
-            .info__option!= "Сначала недорогие"
-            .info__option!= "Сначала популярные"
-            .info__option!= "Сначала новые"
-      ul.info__list
+    .info__wrap
+      .info__num!= "0 товаров"
+      .info__select
+        +btn().info__board!= "Сначала&#160;дорогие"
+        .info__drop
+          .info__option!= "Сначала&#160;дорогие"
+          .info__option!= "Сначала&#160;недорогие"
+          .info__option!= "Сначала&#160;популярные"
+          .info__option!= "Сначала&#160;новые"
+    ul.info__list

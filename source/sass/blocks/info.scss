@@ -2,24 +2,26 @@
   position: relative;
   display: grid;
   grid-template-columns: auto 1fr;
+  grid-auto-flow: dense;
   gap: 0 123px;
   max-width: 1920px;
   margin: 0 auto;
   padding: 62px 67px 147px 64px;
 
   @include vp-1023 {
-    grid-template-columns: 1fr;
-    gap: 48px 0;
-    padding: 48px 24px 64px;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 0;
+    padding: 34px 24px 64px;
   }
 
   &__title {
+    margin: 0;
     font-size: 0;
     line-height: 0;
     grid-column: 1/3;
 
     @include vp-1023 {
-      grid-column: 1/2;
+      margin: 0 0 24px;
       font-size: 36px;
       font-style: normal;
       font-weight: 400;
@@ -29,12 +31,14 @@
   }
 
   &__case {
+    position: relative;
     grid-column: 1/2;
+    grid-row: 1/3;
     margin: 10px 0 0;
 
     @include vp-1023 {
-      position: absolute;
-      grid-column: unset;
+      grid-row: unset;
+      margin: 0;
     }
   }
 
@@ -42,7 +46,10 @@
     display: none;
 
     @include vp-1023 {
+      position: relative;
+      left: -10px;
       display: block;
+      padding: 10px;
       font-size: 12px;
       font-style: normal;
       font-weight: 500;
@@ -59,8 +66,48 @@
     width: 180px;
 
     @include vp-1023 {
-      width: 100%;
+      position: absolute;
+      width: 100vw;
+      top: -94px;
+      left: -24px;
+      max-height: 0;
+      opacity: 0;
+      padding: 54px 24px;
+      border-radius: 24px 24px 0 0;
+      background-color: $color-default-white;
+      transition: max-height $tf-default, opacity $tf-default;
+      overflow: hidden;
+      pointer-events: none;
     }
+
+    &::after {
+      @include pse {
+        display: none;
+
+        @include vp-1023 {
+          position: absolute;
+          top: 12px;
+          left: 50%;
+          transform: translate(-50%, 0);
+          display: block;
+          width: 28px;
+          height: 4px;
+          flex-shrink: 0;
+          border-radius: 40px;
+          opacity: 0.6;
+          background: $color-swamp;
+        }
+      }
+    }
+  }
+
+  &__choice--opened {
+    max-height: 1000vh;
+    opacity: 1;
+    pointer-events: all;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
   }
 
   &__label {
@@ -110,22 +157,16 @@
     text-transform: uppercase;
   }
 
-  &__cont {
-    grid-column: 2/3;
-    display: flex;
-    flex-direction: column;
-    gap: 34px;
-
-    @include vp-1023 {
-      grid-column: 1/2;
-      gap: 24px;
-    }
-  }
-
   &__wrap {
+    grid-column: 2/3;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 0 34px;
+
+    @include vp-1023 {
+      margin: 0;
+    }
   }
 
   &__num {
@@ -146,7 +187,8 @@
     left: 11px;
 
     @include vp-1023 {
-
+      left: 8px;
+      margin: 0 0 0 auto;
     }
   }
 
@@ -162,10 +204,6 @@
     line-height: normal;
     letter-spacing: 0.72px;
     text-transform: uppercase;
-
-    @include vp-1023 {
-
-    }
 
     &::after {
       @include pse {
@@ -206,6 +244,7 @@
   }
 
   &__list {
+    grid-column: 2/3;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(278px, 1fr));
     gap: 16px 24px;
@@ -214,6 +253,7 @@
     list-style: none;
 
     @include vp-1023 {
+      grid-column: 1/3;
       grid-template-columns: repeat(auto-fit, minmax(156px, 1fr));
       gap: 24px 15px;
     }
@@ -277,16 +317,16 @@
     font-weight: 300;
     line-height: 112%;
     letter-spacing: 0.32px;
+
+    @include vp-1023 {
+      margin: 0 0 4px;
+    }
   }
 
   &__bag {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @include vp-1023 {
-
-    }
   }
 
   &__price {
@@ -294,10 +334,6 @@
     font-style: normal;
     font-weight: 600;
     line-height: 100%;
-
-    @include vp-1023 {
-
-    }
   }
 
   &__price span {
@@ -317,12 +353,20 @@
     transition: background-color $trans-default;
 
     @include vp-1023 {
-
+      width: 40px;
+      height: 24px;
+      padding: 4px 12px;
+      border-radius: 6px;
+      background-color: $color-white-smoke;
     }
   }
 
   &__item path {
     transition: stroke $trans-default;
+
+    @include vp-1023 {
+      stroke: $color-swamp;
+    }
   }
 
   &__item:hover &__btn {
@@ -333,13 +377,5 @@
 
   &__item:hover path {
     stroke: $color-swamp;
-  }
-
-  &__selector {
-
-
-    @include vp-1023 {
-
-    }
   }
 }
