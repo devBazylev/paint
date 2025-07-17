@@ -1,0 +1,39 @@
+mixin about()
+  -
+    const data = [
+      {title: "Краски", text: "Идеально подходят для стен и&#160;других поверхностей. Найди&#160;свой&#160;идеальный&#160;цвет!", name: "flower", width: 1920, height: 560, altText: "Цветы в вазе."},
+      {title: "Еще краски", text: "Идеально подходят для стен и&#160;других поверхностей. Найди&#160;свой&#160;идеальный&#160;цвет!", name: "flower", width: 1920, height: 560, altText: "Цветы в вазе."},
+      {title: "Больше красок", text: "Идеально подходят для стен и&#160;других поверхностей. Найди&#160;свой&#160;идеальный&#160;цвет!", name: "flower", width: 1920, height: 560, altText: "Цветы в вазе."},
+      {title: "Меньше красок", text: "Идеально подходят для стен и&#160;других поверхностей. Найди&#160;свой&#160;идеальный&#160;цвет!", name: "flower", width: 1920, height: 560, altText: "Цветы в вазе."},
+      {title: "И&#160;еще немного красок", text: "Идеально подходят для стен и&#160;других поверхностей. Найди&#160;свой&#160;идеальный&#160;цвет!", name: "flower", width: 1920, height: 560, altText: "Цветы в вазе."},
+      {title: "Вот&#160;теперь на&#160;все&#160;хватит)", text: "Идеально подходят для стен и&#160;других поверхностей. Найди&#160;свой&#160;идеальный&#160;цвет!", name: "flower", width: 1920, height: 560, altText: "Цветы в вазе."},
+    ]
+  -
+    const data2 = [
+      {text: "Главная"},
+      {text: "Продукты"},
+      {text: "Краски"},
+    ]
+  section.about
+    h1.visually-hidden!= "Огромное разнообразие красок"
+    ul.about__list
+      each item in data2
+        li.about__item!= item.text
+    .about__slider.swiper
+      .about__wrapper.swiper-wrapper
+        each item in data
+          .about__slide.swiper-slide
+            .about__pic
+              +pic("content", item.name, "jpg", item.width, item.height, item.altText)
+            .about__wrap
+              h2.about__subtitle!= item.title
+              p.about__text!= item.text
+      .about__pag.swiper-pagination
+      .about__btn.about__btn--prev.btn
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <path d="M50 20L30 40L50 60" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      .about__btn.about__btn--next.btn
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <path d="M30 60L50 40L30 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>

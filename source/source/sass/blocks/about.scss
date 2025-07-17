@@ -1,0 +1,151 @@
+.about {
+  position: relative;
+  z-index: 0;
+
+  &__list {
+    position: absolute;
+    top: 32px;
+    left: 64px;
+    display: flex;
+    gap: 19px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 2;
+
+    @include vp-1023 {
+      position: static;
+      padding: 16px 24px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    color: $color-default-white;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    opacity: 0.3;
+
+    @include vp-1023 {
+      color: $color-swamp;
+    }
+  }
+
+  &__item:not(:first-child) {
+    &::after {
+      @include pse {
+        position: absolute;
+        top: 3px;
+        left: -11px;
+        width: 3px;
+        height: 3px;
+        background-color: $color-silver;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__slider {
+    position: relative;
+
+    @include vp-1023 {
+      display: none;
+    }
+  }
+
+  &__slide {
+    position: relative;
+    max-width: 1920px;
+  }
+
+  &__wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 25%;
+    z-index: 1;
+  }
+
+  &__subtitle {
+    width: 100%;
+    margin: 0;
+    color: $color-default-white;
+    text-align: center;
+    font-size: clamp(24px, 3.74vw, 72px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 88%;
+    letter-spacing: -1.44px;
+  }
+
+  &__text {
+    width: 100%;
+    margin: 0;
+    color: $color-default-white;
+    text-align: center;
+    font-size: clamp(12px, 0.68vw, 16px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%;
+    letter-spacing: 0.1vw;
+  }
+
+  &__btn {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 80px;
+    height: 80px;
+    z-index: 1;
+  }
+
+  &__btn--prev {
+    left: 54px;
+  }
+
+  &__btn--next {
+    right: 48px;
+  }
+
+  & &__pag {
+    position: absolute;
+    bottom: 39px;
+    left: 50.3%;
+    transform: translate(-50%, 0);
+    display: flex;
+    width: fit-content;
+    padding: 13px 24px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    @include vp-1439 {
+      bottom: 20px;
+    }
+  }
+
+  &__bullet {
+    display: block;
+    width: 6px;
+    height: 6px;
+    margin: 0;
+    background-color: $color-default-white;
+    border-radius: 50%;
+    opacity: 0.2;
+    cursor: pointer;
+  }
+
+  &__bullet--active {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,399 @@
+.info {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-auto-flow: dense;
+  gap: 0 123px;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 62px 67px 147px 64px;
+
+  @include vp-1023 {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 0;
+    padding: 34px 24px 64px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 0;
+    line-height: 0;
+    grid-column: 1/3;
+
+    @include vp-1023 {
+      margin: 0 0 24px;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 88%;
+      letter-spacing: -1.44px;
+    }
+  }
+
+  &__case {
+    position: relative;
+    grid-column: 1/2;
+    grid-row: 1/3;
+    margin: 10px 0 0;
+
+    @include vp-1023 {
+      grid-row: unset;
+      margin: 0;
+    }
+  }
+
+  &__toggler {
+    display: none;
+
+    @include vp-1023 {
+      position: relative;
+      left: -10px;
+      display: block;
+      padding: 10px;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 0.72px;
+      text-transform: uppercase;
+    }
+  }
+
+  &__choice {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 180px;
+
+    @include vp-1023 {
+      position: absolute;
+      width: 100vw;
+      top: -94px;
+      left: -24px;
+      max-height: 0;
+      opacity: 0;
+      padding: 54px 24px;
+      border-radius: 24px 24px 0 0;
+      background-color: $color-default-white;
+      transition: max-height $tf-default, opacity $tf-default;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    &::after {
+      @include pse {
+        display: none;
+
+        @include vp-1023 {
+          position: absolute;
+          top: 12px;
+          left: 50%;
+          transform: translate(-50%, 0);
+          display: block;
+          width: 28px;
+          height: 4px;
+          flex-shrink: 0;
+          border-radius: 40px;
+          opacity: 0.6;
+          background: $color-swamp;
+        }
+      }
+    }
+  }
+
+  &__choice--opened {
+    max-height: 1000vh;
+    opacity: 1;
+    pointer-events: all;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__backup {
+    position: relative;
+    display: block;
+    width: 36px;
+    height: 22px;
+    margin: 0 11px 0 0;
+    border-radius: 11px;
+    background-color: $color-white-smoke;
+    transition: background-color $trans-default;
+
+    &::after {
+      @include pse {
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        width: 8px;
+        height: 8px;
+        background-color: $color-swamp;
+        border-radius: 50%;
+        transition: left $trans-default;
+      }
+    }
+  }
+
+  &__check:checked + &__backup {
+    background-color: $color-padua;
+  }
+
+  &__check:checked + &__backup::after {
+    left: 21px;
+  }
+
+  &__checktext {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+  }
+
+  &__wrap {
+    grid-column: 2/3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 34px;
+
+    @include vp-1023 {
+      margin: 0;
+    }
+  }
+
+  &__num {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+
+    @include vp-1023 {
+      display: none;
+    }
+  }
+
+  &__select {
+    position: relative;
+    left: -113px;
+
+    @include vp-1023 {
+      left: 8px;
+      margin: 0 0 0 auto;
+    }
+  }
+
+  &__board {
+    position: relative;
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    text-align: right;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+
+    &::after {
+      @include pse {
+        width: 0;
+        height: 0;
+        border: 0 solid transparent;
+        border-left-width: 3px;
+        border-right-width: 3px;
+        border-top: 5px solid $color-nero;
+        transition: transform $trans-default;
+      }
+    }
+  }
+
+  &__select--opened &__board::after {
+    transform: rotate(180deg);
+  }
+
+  &__drop {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity $trans-default, max-height $trans-default;
+    pointer-events: none;
+    z-index: 1;
+    background-color: $color-default-white;
+
+    @include vp-1023 {
+      left: -110px;
+    }
+  }
+
+  &__select--opened &__drop {
+    opacity: 1;
+    max-height: 1000vh;
+    pointer-events: all;
+  }
+
+  &__option {
+    min-width: 280px;
+    padding: 17px 24px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 115%;
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+    transition: background-color $trans-default;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-padua;
+    }
+  }
+
+  &__list {
+    grid-column: 2/3;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(278px, 1fr));
+    gap: 16px 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include vp-1023 {
+      grid-column: 1/3;
+      grid-template-columns: repeat(auto-fit, minmax(156px, 1fr));
+      gap: 24px 15px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 0 14px;
+    border-bottom: 1px solid $color-black-trans;
+    cursor: pointer;
+
+    @include vp-1023 {
+      padding: 0 0 34px;
+    }
+  }
+
+  &__item--none {
+    display: none;
+  }
+
+  &__box {
+    display: grid;
+    width: 100%;
+  }
+
+  &__box > * {
+    grid-area: 1/1/2/2;
+  }
+
+  & img {
+    width: 100%;
+  }
+
+  &__front,
+  &__back {
+    backface-visibility: hidden;
+    transition: transform $trans-default;
+  }
+
+  &__front {
+    transform: perspective(600px) rotateY(0deg);
+  }
+
+  &__back {
+    transform: perspective(600px) rotateY(180deg);
+  }
+
+  &__box:hover > &__front {
+    transform: perspective(600px) rotateY(-180deg);
+  }
+
+  &__box:hover > &__back {
+    transform: perspective(600px) rotateY(0deg);
+  }
+
+  &__text {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 112%;
+    letter-spacing: 0.32px;
+
+    @include vp-1023 {
+      margin: 0 0 4px;
+    }
+  }
+
+  &__bag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__price {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%;
+  }
+
+  &__price span {
+    position: relative;
+    top: 1px;
+    left: 3px;
+    font-size: 18px;
+  }
+
+  &__btn {
+    width: 80px;
+    height: 32px;
+    padding: 6px 0;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background-color: $color-default-white;
+    transition: background-color $trans-default;
+
+    @include vp-1023 {
+      width: 40px;
+      height: 24px;
+      padding: 4px 12px;
+      border-radius: 6px;
+      background-color: $color-white-smoke;
+    }
+  }
+
+  &__item path {
+    transition: stroke $trans-default;
+
+    @include vp-1023 {
+      stroke: $color-swamp;
+    }
+  }
+
+  &__item:hover &__btn {
+    opacity: 1;
+    background-color: $color-padua;
+  }
+
+  &__item:hover path {
+    stroke: $color-swamp;
+  }
+}

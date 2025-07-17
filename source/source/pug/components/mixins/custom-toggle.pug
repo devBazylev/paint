@@ -1,0 +1,16 @@
+mixin custom-toggle(options = {})
+  - const inputLabel = options.inputLabel || "Option"
+  - const inputType = options.inputType || "checkbox"
+  - const inputId = options.inputId || `toggle-${Math.random().toString(36).substring(2, 10)}`
+  - const inputChecked = options.inputChecked || false
+  - const inputName = options.inputName || "option"
+  - const inputValue = options.inputValue || "value"
+
+  .custom-toggle&attributes(attributes)
+    input.custom-toggle__input(type=inputType, id=inputId, name=inputName, value=inputValue, checked=inputChecked)
+    label.custom-toggle__label(for=inputId)
+      span.custom-toggle__icon
+        +img2("svg", "check-mark", "svg", 18, 17, "")
+
+      if inputLabel
+        span.custom-toggle__text= inputLabel
