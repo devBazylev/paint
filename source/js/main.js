@@ -1,6 +1,7 @@
 import {initHeader} from './modules/header';
 import {initAbout} from './modules/about';
 import {initInfo} from './modules/info';
+import {initModal} from './modules/modal';
 
 window.addEventListener('DOMContentLoaded', () => {
   const startHtml = '';
@@ -11,12 +12,14 @@ window.addEventListener('DOMContentLoaded', () => {
     initHeader();
     initAbout();
     initInfo();
+    initModal();
   }
 
   if (currentPage === indexHtml) {
     initHeader();
     initAbout();
     initInfo();
+    initModal();
   }
   window.addEventListener('load', () => {
 

@@ -1,0 +1,30 @@
+mixin modal()
+  -
+    const data = [
+      {text: "Главная"},
+    ]
+  section.modal
+    .modal__cont
+      h2.modal__title!= "Корзина"
+      +btn().modal__cross
+    .modal__form
+      .modal__head
+        .modal__count!= "4 товара"
+        +btn().modal__clean!= "очистить список"
+      .modal__list
+        .modal__item
+          .modal__card
+            +pic().modal__pic
+            .modal__box
+              .modal__name!= "Краска Wallquest, Brownsone MS90102"
+              .modal__price!= "9600 ₽"
+          .modal__wrap
+            +btn().modal__minus
+            .modal__board
+            +btn().modal__plus
+            +btn().modal__delete
+      .modal__foot
+        .modal__bag
+          .modal__sign!= "Итого"
+          .modal__total!= "14 400₽"
+        +btn().modal__submit!= "Оформить заказ"

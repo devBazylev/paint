@@ -20,6 +20,14 @@ const initInfo = () => {
   let sourceCards;
   let startY = 0;
 
+  function getCardId () {
+    const card = this.closest('.info__item');
+    const id = card.getAttribute('data-id');
+    console.log(id);
+
+    return id;
+  }
+
   const sortCardsByHighPrice = (data) => {
     return data.slice().sort((a, b) => b.price - a.price);
   };
@@ -105,11 +113,14 @@ const initInfo = () => {
 
   const loadWithFilter = (callback) => {
     loadData().then((data) => {
-      console.log(data);
       infoList.innerHTML = "";
       const newArr = callback(data);
       createCards(newArr);
       sourceCards = info.querySelectorAll('.info__item');
+      sourceCards.forEach((item) => {
+        const btn = item.querySelector('.info__btn');
+        btn.addEventListener('click', getCardId);
+      });
       showCheckedCards();
     });
   };
