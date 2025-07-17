@@ -117,18 +117,22 @@ const initInfo = () => {
   loadWithFilter(sortCardsByNewFirst);
 
   const onHighPrice = () => {
+    board.textContent = optionHighPrice.textContent;
     loadWithFilter(sortCardsByHighPrice);
   };
 
   const onLowPrice = () => {
+    board.textContent = optionLowPrice.textContent;
     loadWithFilter(sortCardsByLowPrice);
   };
 
   const onPopular = () => {
+    board.textContent = optionPopular.textContent;
     loadWithFilter(sortCardsByPopularFirst);
   };
 
   const onNew = () => {
+    board.textContent = optionNew.textContent;
     loadWithFilter(sortCardsByNewFirst);
   };
 
@@ -153,7 +157,6 @@ const initInfo = () => {
 
   optionHighPrice.addEventListener('click', onHighPrice);
   optionLowPrice.addEventListener('click', onLowPrice);
-
   optionPopular.addEventListener('click', onPopular);
   optionNew.addEventListener('click', onNew);
 };
