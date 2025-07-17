@@ -101,7 +101,7 @@
     }
   }
 
-  &__choice--opened {
+  & &__choice--opened {
     max-height: 1000vh;
     opacity: 1;
     pointer-events: all;
