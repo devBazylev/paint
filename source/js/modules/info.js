@@ -4,6 +4,7 @@ import {createCards} from './creation';
 const initInfo = () => {
   const overlay = document.querySelector('.overlay');
   const info = document.querySelector('.info');
+  const infoList = document.querySelector('.info__list');
   const toggler = info.querySelector('.info__toggler');
   const choice = info.querySelector('.info__choice');
   const checkboxes = info.querySelectorAll('.info__check');
@@ -11,13 +12,62 @@ const initInfo = () => {
   const select = info.querySelector('.info__select');
   const board = select.querySelector('.info__board');
   const options = select.querySelectorAll('.info__option');
+  const optionHighPrice = select.querySelector('.info__option--high');
+  const optionLowPrice = select.querySelector('.info__option--low');
+  const optionPopular = select.querySelector('.info__option--popular');
+  const optionNew = select.querySelector('.info__option--new');
 
   let sourceCards;
   let startY = 0;
 
+  const sortCardsByHighPrice = (data) => {
+    return data.slice().sort((a, b) => b.price - a.price);
+  };
+
+  const sortCardsByLowPrice = (data) => {
+    return data.slice().sort((a, b) => a.price - b.price);
+  };
+
+  const sortCardsByPopularFirst = (data) => {
+    return data.sort((a, b) => {
+      const aHasSale = a.tags.includes('sale') ? 0 : 1;
+      const bHasSale = b.tags.includes('sale') ? 0 : 1;
+      return aHasSale - bHasSale;
+    });
+  };
+
+  const sortCardsByNewFirst = (data) => {
+    return data.sort((a, b) => {
+      const aHasNew = a.tags.includes('new') ? 0 : 1;
+      const bHasNew = b.tags.includes('new') ? 0 : 1;
+      return aHasNew - bHasNew;
+    });
+  };
+
+  const onMissClick = (evt) => {
+    if (!evt.target.closest('.info__select')) {
+      select.classList.remove('info__select--opened');
+      overlay.classList.remove('overlay--active');
+      document.removeEventListener('click', onMissClick);
+      board.addEventListener('click', onBoard);
+    }
+  };
+
+  const onOption = () => {
+    select.classList.remove('info__select--opened');
+    overlay.classList.remove('overlay--active');
+    document.removeEventListener('click', onMissClick);
+    board.addEventListener('click', onBoard);
+  };
+
   const onBoard = () => {
     select.classList.add('info__select--opened');
     overlay.classList.add('overlay--active');
+    document.addEventListener('click', onMissClick);
+    options.forEach((item) => {
+      item.addEventListener('click', onOption);
+    });
+    board.removeEventListener('click', onBoard);
   };
 
   const onToggler = () => {
@@ -53,11 +103,34 @@ const initInfo = () => {
     counter.textContent = `${i} товаров`
   };
 
-  loadData().then((data) => {
-    createCards(data);
-    sourceCards = info.querySelectorAll('.info__item');
-    showCheckedCards();
-  });
+  const loadWithFilter = (callback) => {
+    loadData().then((data) => {
+      console.log(data);
+      infoList.innerHTML = "";
+      const newArr = callback(data);
+      createCards(newArr);
+      sourceCards = info.querySelectorAll('.info__item');
+      showCheckedCards();
+    });
+  };
+
+  loadWithFilter(sortCardsByNewFirst);
+
+  const onHighPrice = () => {
+    loadWithFilter(sortCardsByHighPrice);
+  };
+
+  const onLowPrice = () => {
+    loadWithFilter(sortCardsByLowPrice);
+  };
+
+  const onPopular = () => {
+    loadWithFilter(sortCardsByPopularFirst);
+  };
+
+  const onNew = () => {
+    loadWithFilter(sortCardsByNewFirst);
+  };
 
   checkboxes.forEach((item) => {
     item.addEventListener('change', showCheckedCards);
@@ -77,6 +150,12 @@ const initInfo = () => {
       document.body.classList.remove('lock-scroll');
     }
   });
+
+  optionHighPrice.addEventListener('click', onHighPrice);
+  optionLowPrice.addEventListener('click', onLowPrice);
+
+  optionPopular.addEventListener('click', onPopular);
+  optionNew.addEventListener('click', onNew);
 };
 
 export {initInfo};

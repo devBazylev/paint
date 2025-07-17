@@ -1,18 +1,25 @@
 mixin info()
   -
-    const data = [
+    const data1 = [
       {name: "new", id: "new", text: "Новинки", check: true},
       {name: "exist", id: "exist", text: "Есть в&#160;наличии", check: false},
       {name: "contract", id: "contract", text: "Контрактные", check: false},
       {name: "exclusive", id: "exclusive", text: "Эксклюзивные", check: false},
       {name: "sale", id: "sale", text: "Распродажа", check: false},
     ]
+  -
+    const data2 = [
+      {name: "high", text: "Сначала&#160;дорогие"},
+      {name: "low", text: "Сначала&#160;недорогие"},
+      {name: "popular", text: "Сначала&#160;популярные"},
+      {name: "new", text: "Сначала&#160;новые"},
+    ]
   section.info
     h2.info__title!= "Краски"
     .info__case
       +btn().info__toggler.btn!= "Фильтры"
       .info__choice
-        each item in data
+        each item in data1
           label.info__label.btn
             input(type="checkbox", name=item.name, id=item.id, tabindex="-1", checked=item.check).visually-hidden.info__check
             span(tabindex="1").info__backup
@@ -22,8 +29,6 @@ mixin info()
       .info__select
         +btn().info__board!= "Сначала&#160;дорогие"
         .info__drop
-          .info__option!= "Сначала&#160;дорогие"
-          .info__option!= "Сначала&#160;недорогие"
-          .info__option!= "Сначала&#160;популярные"
-          .info__option!= "Сначала&#160;новые"
+          each item in data2
+            .info__option(class=`info__option--${item.name}`)!= item.text
     ul.info__list
