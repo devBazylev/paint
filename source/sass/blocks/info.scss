@@ -257,10 +257,6 @@
     transition: background-color $trans-default;
     cursor: pointer;
 
-    @include vp-1023 {
-
-    }
-
     &:hover {
       background-color: $color-padua;
     }
@@ -326,7 +322,7 @@
     transform: perspective(600px) rotateY(180deg);
   }
 
-  &__box:hover > &__front{
+  &__box:hover > &__front {
     transform: perspective(600px) rotateY(-180deg);
   }
 
@@ -395,7 +391,6 @@
   &__item:hover &__btn {
     opacity: 1;
     background-color: $color-padua;
-
   }
 
   &__item:hover path {

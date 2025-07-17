@@ -241,7 +241,7 @@
       right: 12px;
     }
 
-    &:before {
+    &::before {
       @include pse {
         content: "4";
         display: inline-flex;

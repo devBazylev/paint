@@ -21,8 +21,8 @@ mixin info()
       .info__choice
         each item in data1
           label.info__label.btn
-            input(type="checkbox", name=item.name, id=item.id, tabindex="-1", checked=item.check).visually-hidden.info__check
-            span(tabindex="1").info__backup
+            input.visually-hidden.info__check(type="checkbox", name=item.name, id=item.id, tabindex="-1", checked=item.check)
+            span.info__backup(tabindex="1")
             span.info__checktext!= item.text
     .info__wrap
       .info__num!= "0 товаров"
