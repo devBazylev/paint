@@ -184,7 +184,7 @@
 
   &__select {
     position: relative;
-    left: 11px;
+    left: -113px;
 
     @include vp-1023 {
       left: 8px;
@@ -224,13 +224,28 @@
 
   &__drop {
     position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity $trans-default, max-height $trans-default;
+    pointer-events: none;
 
     @include vp-1023 {
 
     }
   }
 
+  &__select--opened &__drop {
+    opacity: 1;
+    max-height: 1000vh;
+    pointer-events: all;
+  }
+
   &__option {
+    min-width: 280px;
+    padding: 17px 24px 16px;
     font-size: 12px;
     font-style: normal;
     font-weight: 500;

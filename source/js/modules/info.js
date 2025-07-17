@@ -8,10 +8,17 @@ const initInfo = () => {
   const choice = info.querySelector('.info__choice');
   const checkboxes = info.querySelectorAll('.info__check');
   const counter = info.querySelector('.info__num');
-  const list = info.querySelector('.info__list');
+  const select = info.querySelector('.info__select');
+  const board = select.querySelector('.info__board');
+  const options = select.querySelectorAll('.info__option');
 
   let sourceCards;
   let startY = 0;
+
+  const onBoard = () => {
+    select.classList.add('info__select--opened');
+    overlay.classList.add('overlay--active');
+  };
 
   const onToggler = () => {
     choice.classList.add('info__choice--opened');
@@ -56,6 +63,7 @@ const initInfo = () => {
     item.addEventListener('change', showCheckedCards);
   });
 
+  board.addEventListener('click', onBoard);
   toggler.addEventListener('click', onToggler);
   choice.addEventListener('touchstart', (e) => {
     startY = e.touches[0].clientY;

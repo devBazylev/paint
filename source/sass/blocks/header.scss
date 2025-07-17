@@ -16,6 +16,11 @@
     padding: 0;
   }
 
+  &--opened {
+    background-color: $color-default-white;
+    z-index: 1;
+  }
+
   &__wrap {
     display: grid;
     align-items: center;

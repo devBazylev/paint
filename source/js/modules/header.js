@@ -1,32 +1,31 @@
 const initHeader = () => {
+  const overlay = document.querySelector('.overlay');
   const header = document.querySelector('.header');
-  const toggler = header.querySelector('.header__toggler');
-  const btns = header.querySelectorAll('.header__link, .header__tel, .header__tool');
+  const btns = header.querySelectorAll('.header__link, .header__tel, .header__tool, .header__toggler');
 
   const onMissClick = (evt) => {
-    if (!evt.target.closest('.header__cont') && !evt.target.closest('.header__toggler')) {
+    if (!evt.target.closest('.header') && !evt.target.closest('.header__toggler')) {
       header.classList.remove('header--opened');
+      overlay.classList.remove('overlay--active');
       document.removeEventListener('click', onMissClick);
     }
   };
 
-  const closeMenu = () => {
-    header.classList.remove('header--opened');
-    document.removeEventListener('click', onMissClick);
-    btns.forEach((btn) => {
-      btn.removeEventListener('click', closeMenu);
-    });
+  const toggleMenu = () => {
+    if (header.classList.contains('header--opened')) {
+      overlay.classList.remove('overlay--active');
+      header.classList.remove('header--opened');
+      document.removeEventListener('click', onMissClick);
+    } else {
+      overlay.classList.add('overlay--active');
+      header.classList.add('header--opened');
+      document.addEventListener('click', onMissClick);
+    }
   };
 
-  const openMenu = () => {
-    header.classList.toggle('header--opened');
-    document.addEventListener('click', onMissClick);
-    btns.forEach((btn) => {
-      btn.addEventListener('click', closeMenu);
-    });
-  };
-
-  toggler.addEventListener('click', openMenu);
+  btns.forEach((btn) => {
+    btn.addEventListener('click', toggleMenu);
+  });
 };
 
 export {initHeader};
