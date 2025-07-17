@@ -8,17 +8,11 @@ window.addEventListener('DOMContentLoaded', () => {
   const currentPage = window.location.pathname.split('/').pop();
 
   if (currentPage === startHtml) {
-    try {
-      const intro = document.querySelector('.intro');
-      if (intro) {
-        initHeader();
-        initAbout();
-        initInfo();
-      }
-    } catch (e) {
-      return;
-    }
+    initHeader();
+    initAbout();
+    initInfo();
   }
+
   if (currentPage === indexHtml) {
     initHeader();
     initAbout();
