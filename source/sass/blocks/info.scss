@@ -52,7 +52,7 @@
     }
   }
 
-  &__filters {
+  &__choice {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -230,6 +230,10 @@
     @include vp-1023 {
       padding: 0 0 34px;
     }
+  }
+
+  &__item--none {
+    display: none;
   }
 
   &__box {

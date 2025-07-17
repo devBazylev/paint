@@ -7,6 +7,9 @@ const createCards = (data) => {
     const newCard = document.createElement('li');
     newCard.classList.add('info__item');
     newCard.setAttribute('data-id', item.id);
+    item.tags.forEach((tag) => {
+      newCard.setAttribute(`data-${tag}`, '');
+    });
 
     const newBox = document.createElement('div');
     newBox.classList.add('info__box');

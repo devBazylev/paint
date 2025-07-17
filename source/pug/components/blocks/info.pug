@@ -11,7 +11,7 @@ mixin info()
     h2.info__title!= "Краски"
     .info__case
       +btn().info__toggler.btn!= "Фильтры"
-      .info__filters
+      .info__choice
         each item in data
           label.info__label.btn
             input(type="checkbox", name=item.name, id=item.id, tabindex="-1", checked=item.check).visually-hidden.info__check
@@ -19,7 +19,7 @@ mixin info()
             span.info__checktext!= item.text
     .info__cont
       .info__wrap
-        .info__num!= "412 товаров"
+        .info__num!= "0 товаров"
         .info__select
           +btn().info__board!= "Сначала дорогие"
           .info__drop
