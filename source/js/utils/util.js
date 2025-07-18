@@ -48,7 +48,6 @@ const countPrice = () => {
       const count = +card.querySelector('.modal__board').textContent;
       totalPrice += price * count;
       totalCount += count;
-      console.log(totalPrice);
     });
   }
 

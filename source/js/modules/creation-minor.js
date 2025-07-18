@@ -2,6 +2,14 @@ import {countPrice} from '../utils/util';
 
 const createCardsModal = (data) => {
   const modal = document.querySelector('.modal');
+  const existingCard = modal.querySelector(`.modal__item[data-id="${data.id}"]`);
+
+  if (existingCard) {
+    const board = existingCard.querySelector('.modal__board');
+    board.textContent = +board.textContent + 1;
+    return;
+  }
+
   const list = modal.querySelector('.modal__list');
   const fragmentCard = document.createDocumentFragment();
 

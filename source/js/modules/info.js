@@ -31,7 +31,6 @@ const initInfo = () => {
   const addCardToCart = (evt) => {
     const id = getCardId(evt.target);
     const card = sourceArray.find(item => item.id === id);
-    // console.log(card);
     createCardsModal(card);
     countPrice();
   };
