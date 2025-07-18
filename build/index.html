@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Frontend test by its.agency">
-    <link rel="icon" href="img/favicon/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="img/favicon/site.webmanifest" crossorigin="use-credentials">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="css/style.min.css">
@@ -23,32 +18,32 @@
           </button>
           <a class="btn header__logo" href="index.html"><img src="img/content/logo.svg" width="131" height="26" alt="Логотип.">
           </a>
-          <a class="btn header__cart btn" href="#">
+          <a class="btn header__cart" href="#"><span>0</span>
           </a>
         </div>
         <div class="header__cont">
           <nav class="header__nav">
-            <a class="btn header__link btn" href="#">Продукты
+            <a class="btn header__link" href="#">Продукты
             </a>
-            <a class="btn header__link btn" href="#">Цвета
+            <a class="btn header__link" href="#">Цвета
             </a>
-            <a class="btn header__link btn" href="#">Вдохновение
+            <a class="btn header__link" href="#">Вдохновение
             </a>
-            <a class="btn header__link btn" href="#">Советы
+            <a class="btn header__link" href="#">Советы
             </a>
-            <a class="btn header__link btn" href="#">Найти магазин
+            <a class="btn header__link" href="#">Найти магазин
             </a>
           </nav>
           <div class="header__box">
-            <a class="btn header__tel btn" href="tel:+78005558628">+7 (495) 221-77-69
+            <a class="btn header__tel" href="tel:+78005558628">+7 (495) 221-77-69
             </a><span class="header__sign">Заказать звонок</span>
           </div>
           <div class="header__tools">
-            <a class="btn header__tool btn" href="#"><img src="img/sprite/search.svg" width="20" height="20" alt="search.">
+            <a class="btn header__tool" href="#"><img src="img/sprite/search.svg" width="20" height="20" alt="search.">
             </a>
-            <a class="btn header__tool btn" href="#"><img src="img/sprite/profile.svg" width="22" height="22" alt="profile.">
+            <a class="btn header__tool" href="#"><img src="img/sprite/profile.svg" width="22" height="22" alt="profile.">
             </a>
-            <a class="btn header__tool btn" href="#"><img src="img/sprite/favorite.svg" width="22" height="22" alt="favorite.">
+            <a class="btn header__tool" href="#"><img src="img/sprite/favorite.svg" width="22" height="22" alt="favorite.">
             </a>
           </div>
         </div>
@@ -144,7 +139,7 @@
         <section class="info">
           <h2 class="info__title">Краски</h2>
           <div class="info__case">
-            <button class="btn info__toggler btn" type="button">Фильтры
+            <button class="btn info__toggler" type="button">Фильтры
             </button>
             <div class="info__choice">
               <label class="info__label btn">
@@ -178,6 +173,32 @@
             </div>
           </div>
           <ul class="info__list"></ul>
+        </section>
+        <section class="modal">
+          <div class="modal__cont">
+            <h2 class="modal__title">Корзина</h2>
+            <button class="btn modal__cross" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<path d="M18 6L6 18" stroke="#1f2020" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6 6L18 18" stroke="#1f2020" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+            </button>
+          </div>
+          <div class="modal__form">
+            <div class="modal__head">
+              <div class="modal__count">0<span>&#160;товара</span></div>
+              <button class="btn modal__clean" type="button">очистить список
+              </button>
+            </div>
+            <ul class="modal__list"></ul>
+            <div class="modal__foot">
+              <div class="modal__bag">
+                <div class="modal__sign">Итого</div>
+                <div class="modal__total">0<span>&#160;₽</span></div>
+              </div>
+              <button class="btn modal__submit" type="button">Оформить заказ
+              </button>
+            </div>
+          </div>
         </section>
       </main>
       <footer class="footer"></footer>
