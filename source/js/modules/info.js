@@ -1,5 +1,6 @@
 import {loadData} from './api';
 import {createCards} from './creation';
+import {createCardsModal} from './creation-minor';
 
 const initInfo = () => {
   const overlay = document.querySelector('.overlay');
@@ -17,16 +18,21 @@ const initInfo = () => {
   const optionPopular = select.querySelector('.info__option--popular');
   const optionNew = select.querySelector('.info__option--new');
 
+  let sourceArray;
   let sourceCards;
   let startY = 0;
 
-  function getCardId () {
-    const card = this.closest('.info__item');
-    const id = card.getAttribute('data-id');
-    console.log(id);
+  const getCardId = (elem) => {
+    const card = elem.closest('.info__item');
+    return card ? +card.getAttribute('data-id') : null;
+  };
 
-    return id;
-  }
+  const addCardToCart = (evt) => {
+    const id = getCardId(evt.target);
+    const card = sourceArray.find(item => item.id === id);
+    console.log(card);
+    createCardsModal(card);
+  };
 
   const sortCardsByHighPrice = (data) => {
     return data.slice().sort((a, b) => b.price - a.price);
@@ -114,12 +120,13 @@ const initInfo = () => {
   const loadWithFilter = (callback) => {
     loadData().then((data) => {
       infoList.innerHTML = "";
-      const newArr = callback(data);
+      sourceArray = data;
+      const newArr = callback(sourceArray);
       createCards(newArr);
       sourceCards = info.querySelectorAll('.info__item');
       sourceCards.forEach((item) => {
         const btn = item.querySelector('.info__btn');
-        btn.addEventListener('click', getCardId);
+        btn.addEventListener('click', addCardToCart);
       });
       showCheckedCards();
     });
