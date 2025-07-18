@@ -18,15 +18,16 @@ mixin header()
       +btn().header__toggler
       +btn({href: 'index.html'}).header__logo
         img(src="img/content/logo.svg", width="131", height="26", alt="Логотип.")
-      +btn({href: '#'}).header__cart.btn
+      +btn({href: '#'}).header__cart
+        span!= "0"
     .header__cont
       nav.header__nav
         each item in data1
-          +btn({href: '#'}).header__link.btn!= `${item.text}`
+          +btn({href: '#'}).header__link!= `${item.text}`
       .header__box
-        +btn({href: 'tel:+78005558628'}).header__tel.btn!= "+7 (495) 221-77-69"
+        +btn({href: 'tel:+78005558628'}).header__tel!= "+7 (495) 221-77-69"
         span.header__sign!= "Заказать звонок"
       .header__tools
         each item in data2
-          +btn({href: '#'}).header__tool.btn
+          +btn({href: '#'}).header__tool
             img(src=`img/sprite/${item.path}.svg`, width=`${item.size}`, height=`${item.size}`, alt=`${item.path}.`)

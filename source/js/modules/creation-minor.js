@@ -1,3 +1,5 @@
+import {countPrice} from '../utils/util';
+
 const createCardsModal = (data) => {
   const modal = document.querySelector('.modal');
   const list = modal.querySelector('.modal__list');
@@ -79,6 +81,31 @@ const createCardsModal = (data) => {
 
   fragmentCard.appendChild(newItem);
   list.append(fragmentCard);
+
+  const onDelete = (evt) => {
+    evt.stopPropagation();
+    const card = evt.target.closest('.modal__item');
+    if (card) {
+      card.remove();
+    }
+    countPrice();
+  };
+
+  const onPlus = () => {
+    newBoard.textContent = +newBoard.textContent + 1;
+    countPrice();
+  };
+
+  const onMinus = () => {
+    if (+newBoard.textContent > 0) {
+      newBoard.textContent = +newBoard.textContent - 1;
+      countPrice();
+    }
+  };
+
+  newDelete.addEventListener('click', onDelete);
+  newMinus.addEventListener('click', onMinus);
+  newPlus.addEventListener('click', onPlus);
 };
 
 export {createCardsModal};

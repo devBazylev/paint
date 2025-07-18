@@ -1,6 +1,7 @@
 import {loadData} from './api';
 import {createCards} from './creation';
 import {createCardsModal} from './creation-minor';
+import {countPrice} from '../utils/util';
 
 const initInfo = () => {
   const overlay = document.querySelector('.overlay');
@@ -30,8 +31,9 @@ const initInfo = () => {
   const addCardToCart = (evt) => {
     const id = getCardId(evt.target);
     const card = sourceArray.find(item => item.id === id);
-    console.log(card);
+    // console.log(card);
     createCardsModal(card);
+    countPrice();
   };
 
   const sortCardsByHighPrice = (data) => {
