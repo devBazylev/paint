@@ -6,25 +6,46 @@ mixin modal()
   section.modal
     .modal__cont
       h2.modal__title!= "Корзина"
-      +btn().modal__cross
+      +btn().modal__cross.btn
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M18 6L6 18" stroke="#1f2020" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M6 6L18 18" stroke="#1f2020" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
     .modal__form
       .modal__head
-        .modal__count!= "4 товара"
-        +btn().modal__clean!= "очистить список"
+        .modal__count!= "4"
+          span!= "&#160;товара"
+        +btn().modal__clean.btn!= "очистить список"
       .modal__list
         .modal__item
           .modal__card
-            +pic().modal__pic
+            .modal__pic
+              +pic("content", "info2", "png", 96, 96, "Краска.")
             .modal__box
               .modal__name!= "Краска Wallquest, Brownsone MS90102"
-              .modal__price!= "9600 ₽"
+              .modal__price!= "9600"
+                span!= "&#160;₽"
           .modal__wrap
-            +btn().modal__minus
-            .modal__board
-            +btn().modal__plus
-            +btn().modal__delete
+            +btn().modal__minus.btn
+            .modal__board!= "2"
+            +btn().modal__plus.btn
+            +btn().modal__delete.btn
+        .modal__item
+          .modal__card
+            .modal__pic
+              +pic("content", "info2", "png", 96, 96, "Краска.")
+            .modal__box
+              .modal__name!= "Краска Wallquest, Brownsone MS90102"
+              .modal__price!= "9600"
+                span!= "&#160;₽"
+          .modal__wrap
+            +btn().modal__minus.btn
+            .modal__board!= "2"
+            +btn().modal__plus.btn
+            +btn().modal__delete.btn
       .modal__foot
         .modal__bag
           .modal__sign!= "Итого"
-          .modal__total!= "14 400₽"
-        +btn().modal__submit!= "Оформить заказ"
+          .modal__total!= "14 400"
+            span!= "&#160;₽"
+        +btn().modal__submit.btn!= "Оформить заказ"
