@@ -1,7 +1,7 @@
 const createCards = (data) => {
   const info = document.querySelector('.info');
   const list = info.querySelector('.info__list');
-  const fragmentUsers = document.createDocumentFragment();
+  const fragmentCards = document.createDocumentFragment();
 
   data.forEach((item) => {
     const newCard = document.createElement('li');
@@ -100,10 +100,10 @@ const createCards = (data) => {
     newCard.appendChild(newText);
     newCard.appendChild(newBag);
 
-    fragmentUsers.appendChild(newCard);
+    fragmentCards.appendChild(newCard);
   });
 
-  list.append(fragmentUsers);
+  list.append(fragmentCards);
 };
 
 export {createCards};

@@ -17,7 +17,7 @@ mixin info()
   section.info
     h2.info__title!= "Краски"
     .info__case
-      +btn().info__toggler.btn!= "Фильтры"
+      +btn().info__toggler!= "Фильтры"
       .info__choice
         each item in data1
           label.info__label.btn

@@ -243,7 +243,7 @@
 
     &::before {
       @include pse {
-        content: "4";
+        content: "";
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -253,5 +253,10 @@
         background-color: $color-padua;
       }
     }
+  }
+
+  &__cart span {
+    position: absolute;
+    z-index: 1;
   }
 }

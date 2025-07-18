@@ -33,6 +33,29 @@ const removeClassArray = (array, classs) => {
   });
 };
 
+const countPrice = () => {
+  const cart = document.querySelector('.header__cart span');
+  const modal = document.querySelector('.modal');
+  const cards = modal.querySelectorAll('.modal__item');
+  const total = modal.querySelector('.modal__total');
+  const count = modal.querySelector('.modal__count');
+  let totalPrice = 0;
+  let totalCount = 0;
+
+  if (cards) {
+    cards.forEach((card) => {
+      const price = parseInt(card.querySelector('.modal__price').textContent.replace(/\D/g, ''));
+      const count = +card.querySelector('.modal__board').textContent;
+      totalPrice += price * count;
+      totalCount += count;
+    });
+  }
+
+  total.textContent = `${totalPrice} ₽`;
+  count.textContent = `${totalCount} товаров`;
+  cart.textContent = totalCount;
+};
+
 export {
   mob,
   tab,
@@ -41,5 +64,6 @@ export {
   addClassArray,
   cloneSlides,
   removeClass,
-  removeClassArray
+  removeClassArray,
+  countPrice
 };
