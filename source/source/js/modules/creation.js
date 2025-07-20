@@ -70,6 +70,7 @@ const createCards = (data) => {
     const newBtn = document.createElement('button');
     newBtn.classList.add('info__btn');
     newBtn.classList.add('btn');
+    newBtn.setAttribute("type", "button");
     newBag.appendChild(newBtn);
     const svgNS = "http://www.w3.org/2000/svg";
     const svg = document.createElementNS(svgNS, "svg");

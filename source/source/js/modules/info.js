@@ -1,7 +1,7 @@
 import {loadData} from './api';
 import {createCards} from './creation';
 import {createCardsModal} from './creation-minor';
-import {countPrice} from '../utils/util';
+import {countPrice, desk, getWordByNumber} from '../utils/util';
 
 const initInfo = () => {
   const overlay = document.querySelector('.overlay');
@@ -85,12 +85,6 @@ const initInfo = () => {
     board.removeEventListener('click', onBoard);
   };
 
-  const onToggler = () => {
-    choice.classList.add('info__choice--opened');
-    overlay.classList.add('overlay--active');
-    document.body.classList.add('lock-scroll');
-  };
-
   const getCheckedIds = () => {
     const checkboxes = choice.querySelectorAll('.info__check:checked');
     const ids = Array.from(checkboxes).map(item => item.id);
@@ -115,7 +109,7 @@ const initInfo = () => {
         i++;
       }
     });
-    counter.textContent = `${i} товаров`
+    counter.textContent = `${i} ${getWordByNumber(i)}`
   };
 
   const loadWithFilter = (callback) => {
@@ -155,29 +149,58 @@ const initInfo = () => {
     loadWithFilter(sortCardsByNewFirst);
   };
 
-  checkboxes.forEach((item) => {
-    item.addEventListener('change', showCheckedCards);
-  });
+  const onCheckbox = () => {
+    showCheckedCards();
+  };
 
-  board.addEventListener('click', onBoard);
-  toggler.addEventListener('click', onToggler);
-  choice.addEventListener('touchstart', (e) => {
-    startY = e.touches[0].clientY;
-  });
-  choice.addEventListener('touchend', (e) => {
-    const endY = e.changedTouches[0].clientY;
-    if (endY - startY > 50) {
-      e.preventDefault();
+  const onToggler = () => {
+    choice.classList.add('info__choice--opened');
+    overlay.classList.add('overlay--active');
+    document.body.classList.add('lock-scroll');
+  };
+
+  const onTouchStart = (evt) => {
+    startY = evt.touches[0].clientY;
+  };
+
+  const onTouchMove = (evt) => {
+    evt.preventDefault();
+  };
+
+  const onTouchEnd = (evt) => {
+    const endY = evt.changedTouches[0].clientY;
+    if (endY - startY > 30) {
       choice.classList.remove('info__choice--opened');
       overlay.classList.remove('overlay--active');
       document.body.classList.remove('lock-scroll');
     }
-  });
+  };
 
+  const initChoice = () => {
+    if (desk.matches) {
+      choice.removeEventListener('touchstart', onTouchStart);
+      choice.removeEventListener('touchmove', onTouchMove);
+      choice.removeEventListener('touchend', onTouchEnd);
+    } else {
+      choice.addEventListener('touchstart', onTouchStart);
+      choice.addEventListener('touchmove', onTouchMove);
+      choice.addEventListener('touchend', onTouchEnd);
+    }
+  };
+
+  initChoice();
+
+  desk.addEventListener('change', initChoice);
+
+  board.addEventListener('click', onBoard);
+  toggler.addEventListener('click', onToggler);
   optionHighPrice.addEventListener('click', onHighPrice);
   optionLowPrice.addEventListener('click', onLowPrice);
   optionPopular.addEventListener('click', onPopular);
   optionNew.addEventListener('click', onNew);
+  checkboxes.forEach((item) => {
+    item.addEventListener('change', onCheckbox);
+  });
 };
 
 export {initInfo};
