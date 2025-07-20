@@ -65,10 +65,10 @@ const countPrice = () => {
 
   if (cards) {
     cards.forEach((card) => {
-      const price = parseInt(card.querySelector('.modal__price').textContent.replace(/\D/g, ''));
-      const count = +card.querySelector('.modal__board').textContent;
-      totalPrice += price * count;
-      totalCount += count;
+      const price = parseInt(card.querySelector('.modal__price').textContent.replace(/\D/g, ''), 10);
+      const num = +card.querySelector('.modal__board').textContent;
+      totalPrice += price * num;
+      totalCount += num;
     });
   }
 

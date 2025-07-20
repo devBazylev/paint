@@ -86,8 +86,8 @@ const initInfo = () => {
   };
 
   const getCheckedIds = () => {
-    const checkboxes = choice.querySelectorAll('.info__check:checked');
-    const ids = Array.from(checkboxes).map(item => item.id);
+    const checkedBoxes  = choice.querySelectorAll('.info__check:checked');
+    const ids = Array.from(checkedBoxes).map(item => item.id);
 
     return ids;
   };
