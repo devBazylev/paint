@@ -2240,8 +2240,8 @@ button,
   flex-shrink: 0;
   border-radius: 8px;
   background-color: #ffffff;
-  -webkit-transition: background-color 0.3s ease;
-  transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease, opacity 0.3s ease;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
 .info__item path {
@@ -2256,6 +2256,11 @@ button,
 
 .info__item:hover path {
   stroke: #1f2020;
+}
+
+.info__item .info__btn:hover {
+  opacity: 0.7;
+  background-color: #7bb899;
 }
 
 .footer {
