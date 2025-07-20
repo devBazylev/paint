@@ -33,6 +33,27 @@ const removeClassArray = (array, classs) => {
   });
 };
 
+const getWordByNumber = (number) => {
+  if (number === 0) {
+    return "товаров";
+  }
+
+  const lastTwoDigits = number % 100;
+  const lastDigit = number % 10;
+
+  if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
+    return "товаров";
+  }
+
+  if (lastDigit === 1) {
+    return "товар";
+  } else if ([2, 3, 4].includes(lastDigit)) {
+    return "товара";
+  } else {
+    return "товаров";
+  }
+};
+
 const countPrice = () => {
   const cart = document.querySelector('.header__cart span');
   const modal = document.querySelector('.modal');
@@ -52,7 +73,7 @@ const countPrice = () => {
   }
 
   total.textContent = `${totalPrice} ₽`;
-  count.textContent = `${totalCount} товаров`;
+  count.textContent = `${totalCount} ${getWordByNumber(totalCount)}`;
   cart.textContent = totalCount;
 };
 
@@ -65,5 +86,6 @@ export {
   cloneSlides,
   removeClass,
   removeClassArray,
-  countPrice
+  countPrice,
+  getWordByNumber
 };
