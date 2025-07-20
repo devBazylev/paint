@@ -369,7 +369,7 @@
     flex-shrink: 0;
     border-radius: 8px;
     background-color: $color-default-white;
-    transition: background-color $trans-default;
+    transition: background-color $trans-default, opacity $trans-default;
 
     @include vp-1023 {
       width: 40px;
@@ -395,5 +395,10 @@
 
   &__item:hover path {
     stroke: $color-swamp;
+  }
+
+  &__item &__btn:hover {
+    opacity: 0.7;
+    background-color: $color-padua;
   }
 }
