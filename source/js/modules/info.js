@@ -178,12 +178,12 @@ const initInfo = () => {
 
   const initChoice = () => {
     if (desk.matches) {
-      choice.removeEventListener('touchstart', onTouchStart);
-      choice.removeEventListener('touchmove', onTouchMove);
+      choice.removeEventListener('touchstart', onTouchStart, { passive: true });
+      choice.removeEventListener('touchmove', onTouchMove, { passive: true });
       choice.removeEventListener('touchend', onTouchEnd);
     } else {
-      choice.addEventListener('touchstart', onTouchStart);
-      choice.addEventListener('touchmove', onTouchMove);
+      choice.addEventListener('touchstart', onTouchStart, { passive: true });
+      choice.addEventListener('touchmove', onTouchMove, { passive: true });
       choice.addEventListener('touchend', onTouchEnd);
     }
   };
