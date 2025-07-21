@@ -1,3 +1,5 @@
+import {desk} from '../utils/util.js';
+
 const initHeader = () => {
   const overlay = document.querySelector('.overlay');
   const header = document.querySelector('.header');
@@ -23,9 +25,29 @@ const initHeader = () => {
     }
   };
 
-  btns.forEach((btn) => {
-    btn.addEventListener('click', toggleMenu);
-  });
+  const initToggler = () => {
+    if (!desk.matches) {
+      btns.forEach((btn) => {
+        btn.addEventListener('click', toggleMenu);
+      });
+    }
+  };
+
+  initToggler();
+
+  const onDoc = () => {
+    if (desk.matches) {
+      btns.forEach((btn) => {
+        btn.removeEventListener('click', toggleMenu);
+      });
+    } else {
+      btns.forEach((btn) => {
+        btn.addEventListener('click', toggleMenu);
+      });
+    }
+  };
+
+  desk.addEventListener('change', onDoc);
 };
 
 export {initHeader};
