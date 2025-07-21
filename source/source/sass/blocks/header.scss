@@ -159,6 +159,7 @@
   &__nav {
     display: flex;
     margin: 0 0 0 159px;
+    flex-wrap: wrap;
 
     @include vp-1439 {
       margin: 0 0 0 20px;
