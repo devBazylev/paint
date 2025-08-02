@@ -20,7 +20,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'swiper': path.resolve(__dirname, 'source/js/vendor/swiper'),
+      'swiper': 'swiper',
     },
     extensions: ['.js', '.ts', '.mjs'],
   },
