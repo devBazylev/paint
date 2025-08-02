@@ -18,8 +18,11 @@ module.exports = {
     filename: '[name].min.js',
     path: path.resolve(__dirname, 'build/js'),
   },
-  optimization: {
-    minimize: !isDev,
+  resolve: {
+    alias: {
+      'swiper': path.resolve(__dirname, 'source/js/vendor/swiper'),
+    },
+    extensions: ['.js', '.ts', '.mjs'],
   },
   module: {
     rules: [
